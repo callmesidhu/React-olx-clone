@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import Logo from '../../olx-logo.png';
 import './Login.css';
-import { FirebaseContext } from '../../store/firebaseContext';
+import { FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom';
 
 
@@ -15,6 +15,12 @@ export default function Login() {
   const {firebase} = useContext(FirebaseContext)
   const handleLogin = (e)=>{
     e.preventDefault();
+
+    if (!email || !password ) {
+      alert("All fields are required!");
+      return;
+    }
+
     firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
       history.push("/")
     }).catch((error)=>{

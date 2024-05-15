@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import Logo from '../../olx-logo.png';
 import './Signup.css';
-import { FirebaseContext } from '../../store/firebaseContext';
+import { FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom';
 
 
@@ -21,6 +21,11 @@ export default function Signup() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!email || !password || !username || !phone) {
+      alert("All fields are required!");
+      return;
+    }
   
     try {
       console.log("Creating user with email and password...");
