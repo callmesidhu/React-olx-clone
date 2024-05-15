@@ -17,9 +17,11 @@ function Header() {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
+        <a href='/'>
         <div className="brandName">
           <OlxLogo></OlxLogo>
         </div>
+        </a>
         <div className="placeSearch">
           <Search></Search>
           <input type="text" />
@@ -50,6 +52,7 @@ function Header() {
         }} style={{color:'black'}}>Logout</span>}</b>
 
 
+        <a href='/create'>
         <div className="sellMenu">
           <SellButton></SellButton>
           <div className="sellMenuContent">
@@ -57,6 +60,7 @@ function Header() {
             <span>SELL</span>
           </div>
         </div>
+        </a>
       </div>
     </div>
   );
