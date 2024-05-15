@@ -6,7 +6,10 @@ import Search from '../../assets/Search';
 import Arrow from '../../assets/Arrow';
 import SellButton from '../../assets/SellButton';
 import SellButtonPlus from '../../assets/SellButtonPlus';
+
 function Header() {
+
+
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -34,7 +37,7 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>Login</span>
+          <a href='/login' style={{color:'black'}}>Login</a>
           <hr />
         </div>
 

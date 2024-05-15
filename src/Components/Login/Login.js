@@ -52,7 +52,7 @@ export default function Login() {
           <br />
           <button>Login</button>
         </form>
-        <a href='/signup'>Signup</a>
+        <a href='/signup' style={{color:'black'}}>Signup</a>
       </div>
     </div>
   );
