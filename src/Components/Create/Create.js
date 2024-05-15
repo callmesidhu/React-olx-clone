@@ -2,14 +2,17 @@ import React, { Fragment, useContext, useState } from 'react';
 import './Create.css';
 import Header from '../Header/Header';
 import { AuthContext, FirebaseContext } from '../../store/Context';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Create = () => {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const [image, setImage] = useState(null);
+
   const { firebase } = useContext(FirebaseContext);
   const { user } = useContext(AuthContext);
+  const history = useHistory()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +45,7 @@ const Create = () => {
             createdAt: new Date().toDateString() // Fixed date format method
           }).then(() => {
             alert("Product created successfully!");
+            history.push("/");
           }).catch((error) => {
             console.error("Error adding product:", error);
             alert("Product creation failed!");
