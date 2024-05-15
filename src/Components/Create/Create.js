@@ -3,6 +3,7 @@ import './Create.css';
 import Header from '../Header/Header';
 import { AuthContext, FirebaseContext } from '../../store/Context';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Logo from '../../olx-logo.png';
 
 const Create = () => {
   const [name, setName] = useState('');
@@ -59,7 +60,19 @@ const Create = () => {
     <Fragment>
       <Header />
       <div className="centerDiv">
+      <img width="200px" height="200px" src={Logo} alt='' style={{marginLeft:'40px'}}></img>
         <form>
+        <label htmlFor="category">Category</label>
+          <br />
+          <input
+            className="input"
+            type="text"
+            id="category"
+            name="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <br />
           <label htmlFor="fname">Name</label>
           <br />
           <input
@@ -69,17 +82,6 @@ const Create = () => {
             name="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-          <label htmlFor="category">Category</label>
-          <br />
-          <input
-            className="input"
-            type="text"
-            id="category"
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
           />
           <br />
           <label htmlFor="price">Price</label>

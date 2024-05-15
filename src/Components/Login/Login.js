@@ -31,8 +31,9 @@ export default function Login() {
   return (
     <div>
       <div className="loginParentDiv">
-        <img width="200px" height="200px" src={Logo} alt='' ></img>
+        
         <form onSubmit={handleLogin}>
+        <img width="200px" height="200px" src={Logo} alt='' ></img>
           <label htmlFor="fname">Email</label>
           <br />
           <input
