@@ -9,15 +9,11 @@ function App() {
   return (
     <div>
       <Router>
-        <Route exact path='/'>
-          <Home/>
-        </Route>
-        <Route path='/signup'>
-          <Signup/>
-        </Route>
-        <Route path='/login'>
-          <Login/>
-        </Route>
+
+        <Route exact path='/'> <Home/> </Route>
+        <Route path='/login'>  <Login/> </Route>
+        <Route path='/signup'> <Signup/> </Route>
+        
       </Router>
     </div>
   );

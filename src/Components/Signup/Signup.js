@@ -1,38 +1,75 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Logo from '../../olx-logo.png';
 import './Signup.css';
 import { FirebaseContext } from '../../store/firebaseContext';
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+
 
 export default function Signup() {
 
-  const history =useHistory()
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
-  const {firebase} = useContext(FirebaseContext)
-  
-  const handleSubmit =(e)=>{
-    e.preverntDefault()
-   firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      result.user.updateProfile({displayName: username}).then(()=>{
-          firebase.firestore().collection('user').add({
-            id:result.user.uid,
-            username:username,
-            phone:phone
-          }).then(()=>{
-            history.push("/login")
 
-          })
-      })
-    }) 
-  }
+  const {firebase} = useContext(FirebaseContext)
+  const history = useHistory();
+
+
+      
+  
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      console.log("Creating user with email and password...");
+      const result = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      
+      console.log("User created:", result.user.uid);
+      
+
+
+      console.log("Updating user profile...");
+      await result.user.updateProfile({
+        displayName: username
+      });
+
+      console.log("User profile updated");
+      
+
+
+      console.log("Adding user data to Firestore...");
+      await firebase.firestore().collection('users').add({
+        id: result.user.uid,
+        username: username,
+        phone: phone
+      });
+
+      console.log("User data added to Firestore");
+  
+
+
+      console.log("Redirecting to login page...");
+      history.push("/login");
+
+    } catch (error) {
+      console.error("Error during registration:", error);
+    }
+  };
+  
+
+  
+
+
+
+
+
   
   return (
     <div>
       <div className="signupParentDiv">
-        <img width="200px" height="200px" src={Logo}></img>
+        <img width="200px" height="200px" alt='' src={Logo}></img>
         <form onSubmit={handleSubmit}>
           <label htmlFor="fname">Username</label>
           <br />
@@ -55,7 +92,7 @@ export default function Signup() {
             onChange={(e)=>setEmail(e.target.value)}
             id="fname"
             name="email"
-            defaultValue="callmesidhu@gmail.com"
+            defaultValue="sidharthpunalur@gmail.com"
           />
           <br />
           <label htmlFor="lname">Phone</label>
@@ -85,7 +122,7 @@ export default function Signup() {
           <br />
           <button>Signup</button>
         </form>
-        <a>Login</a>
+        <a href='/login'>Login</a>
       </div>
     </div>
   );
