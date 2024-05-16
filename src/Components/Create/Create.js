@@ -46,7 +46,7 @@ const Create = () => {
             createdAt: new Date().toDateString() // Fixed date format method
           }).then(() => {
             alert("Product created successfully!");
-            history.push("/");
+            history.push("/home");
           }).catch((error) => {
             console.error("Error adding product:", error);
             alert("Product creation failed!");

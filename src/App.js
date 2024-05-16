@@ -17,12 +17,14 @@ function App() {
       setUser(user)
     })
   })
+  var pathLocation = '/' || '/login';
 
   return (
     <div>
       <Router>
 
-        <Route exact path='/'> <Home/> </Route>
+        <Route exact path={pathLocation}>  <Login/> </Route>
+        <Route path='/home'> <Home/> </Route>
         <Route path='/login'>  <Login/> </Route>
         <Route path='/signup'> <Signup/> </Route>
         <Route path='/create'> <Create/> </Route>

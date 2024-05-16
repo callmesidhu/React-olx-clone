@@ -17,7 +17,7 @@ function Header() {
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
-        <a href='/'>
+        <a href='/home'>
         <div className="brandName">
           <OlxLogo></OlxLogo>
         </div>
@@ -49,7 +49,7 @@ function Header() {
         <b>{user && <span onClick={()=>{
              firebase.auth().signOut();
              history.push("/login")
-        }} style={{color:'black'}}>Logout</span>}</b>
+        }} style={{color:'black',cursor:'grab'}}>Logout</span>}</b>
 
 
         <a href='/create'>

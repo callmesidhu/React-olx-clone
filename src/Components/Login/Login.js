@@ -22,9 +22,9 @@ export default function Login() {
     }
 
     firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
-      history.push("/")
+      history.push("/home")
     }).catch((error)=>{
-      alert(error.message)
+      alert("Login Failed!!!")
     })
   }
 
@@ -34,6 +34,7 @@ export default function Login() {
         
         <form onSubmit={handleLogin}>
         <img width="200px" height="200px" src={Logo} alt='' ></img>
+        <br/>
           <label htmlFor="fname">Email</label>
           <br />
           <input
