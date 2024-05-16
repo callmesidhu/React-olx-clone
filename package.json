@@ -17,9 +17,9 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "test":"export NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
