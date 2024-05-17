@@ -8,6 +8,7 @@
 
  To See Project{
 
+       git clone https://github.com/callmesidhu/react-olx-clone.git
        npm install
        npm start
 
